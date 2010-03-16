@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
 from durationfield.forms.fields import DurationField as FDurationField
-from django.db.models.fields import Field
+from django.db.models.fields import DecimalField
 
-class DurationField(Field):
+class DurationField(DecimalField):
 
     description = "A duration of time"
 
@@ -12,7 +12,7 @@ class DurationField(Field):
         self.max_digits, self.decimal_places = 20, 6
 
     def get_internal_type(self):
-        return "BigIntegerField"
+        return "IntegerField"
 
     def db_type(self, connection):
         return "bigint"
